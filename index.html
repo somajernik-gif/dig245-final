@@ -1,20 +1,149 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- meta tags, links to css, etc. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Final Project</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Based on Basically Nothing</title>
 </head>
 
 <body>
+    <!-- [AI-Generated: ChatGPT] Prototype HTML structure. -->
 
-    <!-- visible content goes here -->
-	<h1>Final Project</h1>
-	<p>See README.md for info</p>
+    <header>
+        <h1>Based on Basically Nothing</h1>
+        <p>Three favorites. A lot of assumptions.</p>
+    </header>
 
-    <!-- load javascript after the page elements render -->
+    <main>
+        <section id="intro">
+            <p>
+                Pick your comfort show, favorite color, and favorite dessert.
+                Find out what they supposedly say about you.
+            </p>
+            <button id="startButton" type="button">Start Quiz</button>
+        </section>
+
+        <section id="quiz" hidden>
+            <h2>Tell us your favorites</h2>
+
+            <form id="searchForm">
+                <label for="showSearch">1. What is your comfort show?</label>
+                <input
+                    id="showSearch"
+                    type="text"
+                    placeholder="Example: New Girl"
+                    required
+                >
+                <button id="searchButton" type="submit">Search</button>
+            </form>
+
+            <p id="searchMessage" role="status"></p>
+            <div id="showResults"></div>
+            <p id="selectedShow"></p>
+
+            <form id="quizForm">
+                <p>
+                    <label for="color">2. What is your favorite color?</label>
+                    <select id="color" required>
+                        <option value="">Choose a color</option>
+                        <option value="pink">Pink</option>
+                        <option value="blue">Blue</option>
+                        <option value="purple">Purple</option>
+                        <option value="green">Green</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="red">Red</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="dessert">3. What is your favorite dessert?</label>
+                    <select id="dessert" required>
+                        <option value="">Choose a dessert</option>
+                        <option value="brownies">Brownies</option>
+                        <option value="cookies">Cookies</option>
+                        <option value="cake">Cake</option>
+                        <option value="ice cream">Ice cream</option>
+                        <option value="pie">Pie</option>
+                        <option value="cheesecake">Cheesecake</option>
+                    </select>
+                </p>
+
+                <p id="quizMessage" role="alert"></p>
+                <button type="submit">See My Profile</button>
+            </form>
+        </section>
+
+        <section id="results" hidden>
+            <h2>Your personality, apparently</h2>
+            <p id="answerSummary"></p>
+
+            <h3>You as a friend</h3>
+            <p id="friendResult"></p>
+
+            <h3>Your ideal Friday</h3>
+            <p id="fridayResult"></p>
+
+            <h3>Your signature habit</h3>
+            <p id="habitResult"></p>
+
+            <p>This is a playful quiz, not a real personality assessment.</p>
+
+            <button
+                id="explainButton"
+                type="button"
+                aria-expanded="false"
+                aria-controls="explanation"
+            >
+                How did we get this?
+            </button>
+
+            <button id="changeButton" type="button">Change an answer</button>
+            <button id="restartButton" type="button">Start Again</button>
+
+            <section id="explanation" hidden>
+                <h3>Here is how we guessed</h3>
+                <p id="showExplanation"></p>
+                <p id="colorExplanation"></p>
+                <p id="dessertExplanation"></p>
+                <p>
+                    These connections were made up. The app randomly picked
+                    sentences from lists assigned to your answers.
+                </p>
+            </section>
+
+            <section id="comparison" hidden>
+                <h3>What changed?</h3>
+                <div id="comparisonText"></div>
+            </section>
+        </section>
+
+        <section>
+            <h2>About this project</h2>
+            <p>
+                This project explores how websites use small pieces of
+                information to make assumptions about people. A result
+                can feel personal even when the connections are arbitrary.
+            </p>
+            <p>
+                Your answers stay in this page's memory until you refresh.
+                Show searches are sent to TVmaze.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>A project by Sophie Majernik for DIG 245.</p>
+        <p>
+            Show information:
+            <a href="https://www.tvmaze.com/">TVmaze</a>,
+            licensed under
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+                CC BY-SA 4.0
+            </a>.
+        </p>
+        <p>Prototype code and sample descriptions created with ChatGPT.</p>
+    </footer>
+
     <script src="assets/js/main.js"></script>
 </body>
 </html>
