@@ -1,4 +1,4 @@
-// [AI-Generated: ChatGPT]
+// [AI-Assisted: ChatGPT]
 // Prototype quiz logic, API search, and sample personality descriptions.
 
 // Store the selected show and the most recent profile.
