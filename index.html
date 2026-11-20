@@ -7,7 +7,6 @@
 </head>
 
 <body>
-    <!-- [AI-Generated: ChatGPT] Prototype HTML structure. -->
 
     <header>
         <h1>Based on Basically Nothing</h1>
@@ -23,100 +22,129 @@
             <button id="startButton" type="button">Start Quiz</button>
         </section>
 
-        <section id="quiz" hidden>
-            <h2>Tell us your favorites</h2>
+        <!-- [AI-Generated: ChatGPT] Quiz screens and navigation. -->
 
-            <form id="searchForm">
-                <label for="showSearch">1. What is your comfort show?</label>
-                <input
-                    id="showSearch"
-                    type="text"
-                    placeholder="Example: New Girl"
-                    required
-                >
-                <button id="searchButton" type="submit">Search</button>
-            </form>
+<section id="quiz" hidden>
+    <h2 id="questionHeading" tabindex="-1">Tell us your favorites</h2>
+    <p id="questionProgress" aria-live="polite">Question 1 of 6</p>
 
-            <p id="searchMessage" role="status"></p>
-            <div id="showResults"></div>
-            <p id="selectedShow" role="status"></p>
+    <!-- Question 1 -->
+    <div class="question">
+        <form id="searchForm">
+            <label for="showSearch">What is your comfort show?</label>
 
-            <form id="quizForm">
-                <p>
-                    <label for="color">2. What is your favorite color?</label>
-                    <select id="color" required>
-                        <option value="">Choose a color</option>
-                        <option value="Pink">Pink</option>
-                        <option value="Blue">Blue</option>
-                        <option value="Purple">Purple</option>
-                        <option value="Green">Green</option>
-                        <option value="Yellow">Yellow</option>
-                        <option value="Red">Red</option>
-                    </select>
-                </p>
+            <input
+                id="showSearch"
+                type="text"
+                placeholder="Example: New Girl"
+                required
+            >
 
-                <p>
-                    <label for="dessert">3. What is your favorite dessert?</label>
-                    <select id="dessert" required>
-                        <option value="">Choose a dessert</option>
-                        <option value="Brownies">Brownies</option>
-                        <option value="Cookies">Cookies</option>
-                        <option value="Cake">Cake</option>
-                        <option value="Ice cream">Ice cream</option>
-                        <option value="Pie">Pie</option>
-                        <option value="Cheesecake">Cheesecake</option>
-                    </select>
-                </p>
+            <button id="searchButton" type="submit">Search</button>
+        </form>
 
-                <p>
-                    <label for="boardGame">
-                        4. What is your favorite board game?
-                    </label>
-                    <select id="boardGame" required>
-                        <option value="">Choose a board game</option>
-                        <option value="Monopoly">Monopoly</option>
-                        <option value="Clue">Clue</option>
-                        <option value="Scrabble">Scrabble</option>
-                        <option value="Catan">Catan</option>
-                        <option value="Sorry!">Sorry!</option>
-                        <option value="The Game of Life">The Game of Life</option>
-                        <option value="Other">Other / I don't play</option>
-                    </select>
-                </p>
+        <p id="searchMessage" role="status"></p>
+        <div id="showResults"></div>
+        <p id="selectedShow" role="status"></p>
+    </div>
 
-                <p>
-                    <label for="drink">5. What is your favorite drink?</label>
-                    <select id="drink" required>
-                        <option value="">Choose a drink</option>
-                        <option value="Coffee">Coffee</option>
-                        <option value="Tea">Tea</option>
-                        <option value="Water">Water</option>
-                        <option value="Soda">Soda</option>
-                        <option value="Lemonade">Lemonade</option>
-                        <option value="Smoothie">Smoothie</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </p>
+    <form id="quizForm">
+        <!-- Question 2 -->
+        <div class="question" hidden>
+            <label for="color">What is your favorite color?</label>
 
-                <p>
-                    <label for="sport">6. What is your favorite sport?</label>
-                    <select id="sport" required>
-                        <option value="">Choose a sport</option>
-                        <option value="Lacrosse">Lacrosse</option>
-                        <option value="Soccer">Soccer</option>
-                        <option value="Basketball">Basketball</option>
-                        <option value="Football">Football</option>
-                        <option value="Tennis">Tennis</option>
-                        <option value="Volleyball">Volleyball</option>
-                        <option value="Other">Other</option>
-                        <option value="None">I'm not into sports</option>
-                    </select>
-                </p>
+            <select id="color" required>
+                <option value="">Choose a color</option>
+                <option value="Pink">Pink</option>
+                <option value="Blue">Blue</option>
+                <option value="Purple">Purple</option>
+                <option value="Green">Green</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Red">Red</option>
+            </select>
+        </div>
 
-                <p id="quizMessage" role="alert"></p>
-                <button type="submit">See My Profile</button>
-            </form>
-        </section>
+        <!-- Question 3 -->
+        <div class="question" hidden>
+            <label for="dessert">What is your favorite dessert?</label>
+
+            <select id="dessert" required>
+                <option value="">Choose a dessert</option>
+                <option value="Brownies">Brownies</option>
+                <option value="Cookies">Cookies</option>
+                <option value="Cake">Cake</option>
+                <option value="Ice cream">Ice cream</option>
+                <option value="Pie">Pie</option>
+                <option value="Cheesecake">Cheesecake</option>
+            </select>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question" hidden>
+            <label for="boardGame">What is your favorite board game?</label>
+
+            <select id="boardGame" required>
+                <option value="">Choose a board game</option>
+                <option value="Monopoly">Monopoly</option>
+                <option value="Clue">Clue</option>
+                <option value="Scrabble">Scrabble</option>
+                <option value="Catan">Catan</option>
+                <option value="Sorry!">Sorry!</option>
+                <option value="The Game of Life">The Game of Life</option>
+                <option value="Other">Other / I don't play</option>
+            </select>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question" hidden>
+            <label for="drink">What is your favorite drink?</label>
+
+            <select id="drink" required>
+                <option value="">Choose a drink</option>
+                <option value="Coffee">Coffee</option>
+                <option value="Tea">Tea</option>
+                <option value="Water">Water</option>
+                <option value="Soda">Soda</option>
+                <option value="Lemonade">Lemonade</option>
+                <option value="Smoothie">Smoothie</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question" hidden>
+            <label for="sport">What is your favorite sport?</label>
+
+            <select id="sport" required>
+                <option value="">Choose a sport</option>
+                <option value="Lacrosse">Lacrosse</option>
+                <option value="Soccer">Soccer</option>
+                <option value="Basketball">Basketball</option>
+                <option value="Football">Football</option>
+                <option value="Tennis">Tennis</option>
+                <option value="Volleyball">Volleyball</option>
+                <option value="Other">Other</option>
+                <option value="None">I'm not into sports</option>
+            </select>
+        </div>
+    </form>
+
+    <p id="quizMessage" role="alert"></p>
+
+    <div>
+        <button id="backButton" type="button" hidden>Back</button>
+        <button id="nextButton" type="button">Next</button>
+
+        <button
+            id="profileButton"
+            type="submit"
+            form="quizForm"
+            hidden
+        >
+            See My Profile
+        </button>
+    </div>
+</section>
 
         <section id="results" hidden>
             <h2>Your personality, apparently</h2>
