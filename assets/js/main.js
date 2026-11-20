@@ -1,4 +1,3 @@
-// [AI-Generated: ChatGPT]
 // Prototype quiz logic, TVmaze search, and sample personality descriptions.
 // These descriptions are fictional and can be replaced with your own writing.
 
@@ -542,3 +541,104 @@ document.querySelector("#restartButton").addEventListener("click", function () {
 
     showSection("intro");
 });
+
+// Display one question at a time and validate before continuing.
+
+let currentQuestion = 0;
+const questions = document.querySelectorAll("#quiz .question");
+
+function showQuestion(index, moveFocus) {
+    currentQuestion = index;
+
+    // Show only the current question.
+    questions.forEach(function (question, questionIndex) {
+        question.hidden = questionIndex !== currentQuestion;
+    });
+
+    document.querySelector("#questionProgress").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    // Back appears after the first question.
+    document.querySelector("#backButton").hidden =
+        currentQuestion === 0;
+
+    // The final question uses See My Profile instead of Next.
+    let lastQuestion = currentQuestion === questions.length - 1;
+
+    document.querySelector("#nextButton").hidden = lastQuestion;
+    document.querySelector("#profileButton").hidden = !lastQuestion;
+
+    document.querySelector("#quizMessage").textContent = "";
+
+    if (moveFocus) {
+        document.querySelector("#questionHeading").focus();
+    }
+}
+
+// Continue only when the current question has an answer.
+document.querySelector("#nextButton").addEventListener("click", function () {
+    if (currentQuestion === 0) {
+        if (selectedShow === null) {
+            document.querySelector("#quizMessage").textContent =
+                "Search for a show and select it before continuing.";
+
+            document.querySelector("#showSearch").focus();
+            return;
+        }
+    } else {
+        let select = questions[currentQuestion].querySelector("select");
+
+        if (!select.reportValidity()) {
+            return;
+        }
+    }
+
+    if (currentQuestion < questions.length - 1) {
+        showQuestion(currentQuestion + 1, true);
+    }
+});
+
+// Go back without clearing answers.
+document.querySelector("#backButton").addEventListener("click", function () {
+    if (currentQuestion > 0) {
+        showQuestion(currentQuestion - 1, true);
+    }
+});
+
+// Open the first question when starting.
+document.querySelector("#startButton").addEventListener("click", function () {
+    showQuestion(0, true);
+});
+
+// Return to the first question when editing answers.
+// Existing selections stay saved.
+document.querySelector("#changeButton").addEventListener("click", function () {
+    showQuestion(0, true);
+});
+
+// Reset the question position when restarting.
+document.querySelector("#restartButton").addEventListener("click", function () {
+    showQuestion(0, false);
+});
+
+// Prevent an early form submission from skipping questions.
+document.querySelector("#quizForm").addEventListener("submit", function (event) {
+    if (currentQuestion !== questions.length - 1) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        document.querySelector("#nextButton").click();
+    }
+}, true);
+
+// If an unanswered field needs attention, show its question first.
+document.querySelector("#quizForm").addEventListener("invalid", function (event) {
+    let question = event.target.closest(".question");
+    let index = Array.from(questions).indexOf(question);
+
+    if (index !== -1 && index !== currentQuestion) {
+        showQuestion(index, false);
+    }
+}, true);
+
+// Set up the first question when the page loads.
+showQuestion(0, false);
